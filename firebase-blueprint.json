@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "siteConfig": {
+      "title": "Site Configuration",
+      "description": "Global configuration such as site logo and name",
+      "type": "object",
+      "properties": {
+        "logoUrl": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["logoUrl", "name"]
+    },
+    "category": {
+      "title": "Image Category",
+      "description": "A category for portfolio images",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "nameBn": { "type": "string" }
+      },
+      "required": ["id", "nameEn", "nameBn"]
+    },
+    "portfolioImage": {
+      "title": "Portfolio Image",
+      "description": "An image with localized titles and descriptions",
+      "type": "object",
+      "properties": {
+        "src": { "type": "string" },
+        "titleEn": { "type": "string" },
+        "titleBn": { "type": "string" },
+        "descEn": { "type": "string" },
+        "descBn": { "type": "string" },
+        "category": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["src", "titleEn", "titleBn", "category"]
+    },
+    "leadQuery": {
+      "title": "Lead Query",
+      "description": "A client query submitted through the contact form",
+      "type": "object",
+      "properties": {
+        "clientName": { "type": "string" },
+        "businessNiche": { "type": "string" },
+        "customMessage": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["clientName"]
+    }
+  },
+  "firestore": {
+    "/configs/{configId}": {
+      "schema": "siteConfig",
+      "description": "Site global config"
+    },
+    "/categories/{categoryId}": {
+      "schema": "category",
+      "description": "Portfolio categories"
+    },
+    "/images/{imageId}": {
+      "schema": "portfolioImage",
+      "description": "Portfolio images list"
+    },
+    "/queries/{queryId}": {
+      "schema": "leadQuery",
+      "description": "Client consultation queries"
+    }
+  }
+}
